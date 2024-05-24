@@ -25,7 +25,10 @@ y = [y1;y2];
 x = V*y; % y=V'*x
 
 % part e
-
+% b is linear combination of a vector of module 1 directed by U(:,3)
+% and whatever else inside the basis of A
+% The projection is the closest point. y = pinv(A)*b
+b=U(:,3)+U(:,2);
 
 % clear eveything except the required answers
 clearvars -EXCEPT U V A x b;
