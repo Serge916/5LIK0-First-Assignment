@@ -2,12 +2,12 @@
 %
 % the following parameters define the fixed point representation of the
 % data variables in the computation of the square root
-DAT_BW = 20;   % the bit width of the data variables
-DAT_FL = 5;    % the fraction length of the data variables
+DAT_BW = 10;   % the bit width of the data variables
+DAT_FL = DAT_BW-2;    % the fraction length of the data variables
 DAT_S = true;  % the signedness of the data variables
 
 % the number of iterations of the CORDIC algorithm
-NIter = 5;
+NIter = 3;
 
 % do not change any of the fixed point parameters below this point!
 % default parameters for fixed point arithmetic
@@ -25,7 +25,7 @@ step  = 2^-6;
 
 
 % input values in the range [.5, 2)
-v = 0.5:step:(2-step);
+v = .5:step:(2-step);
 % fixed-point inputs in range [.5, 2)
 v_fixpt = fi(v, DAT_S, DAT_BW);
 
@@ -58,3 +58,7 @@ absErr_fixpt = abs(x_ref - double(x_sqr_fixpt)); % compute the error in the floa
 plot(v, absErr_fltpt, 'r-');
 plot(v, absErr_fixpt, 'g-');
 title('Absolute Error (vs. MATLAB SQRT Reference Results)');
+
+
+expected = mean((absErr_fixpt-absErr_fltpt).^2);
+disp("E((rFloat - rFixp)^2) = "+ expected)

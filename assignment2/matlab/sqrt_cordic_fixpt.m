@@ -2,7 +2,7 @@
 % fixed point version
 % ThetaLUTFP contains the fixed point lookup table
 % DAT_BW, DAT_FL, DAT_S, F are the fixed point parameters, see testCordic_sqrt.m
-function r = sqrt_cordic(v, N, DAT_BW, DAT_FL, DAT_S, F)
+function r = sqrt_cordic_fixpt(v, N, DAT_BW, DAT_FL, DAT_S, F)
 % compute for N iterations
 % First: tune the inputs
 c = 0.25; % A constant
